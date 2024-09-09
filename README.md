@@ -87,7 +87,7 @@ To set up this project on your local machine:
 
 - [Pixhawk Documentation](https://docs.px4.io/)
 - [DroneKit-Python](http://python.dronekit.io/)
-- [YOLOv4: Optimal Speed and Accuracy of Object Detection](https://arxiv.org/abs/2004.10934)
+- [Google Coral edge tpu on raspberry pi](https://docs.ultralytics.com/guides/coral-edge-tpu-on-raspberry-pi/)
 - [Google Coral](https://coral.ai/)
 - [edge-tpu-silva Repository](https://github.com/DAVIDNYARKO123/edge-tpu-silva)
 
