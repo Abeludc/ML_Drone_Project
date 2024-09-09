@@ -1,4 +1,3 @@
-
 # ML Drone Project
 
 Welcome to the ML Drone Project repository! This project focuses on autonomous drone missions using a Pixhawk flight controller and a Raspberry Pi, alongside Machine Learning (ML) implementations for object detection using YOLO and Google Coral. The repository is organized into two main sections: `Missions` and `ML`.
@@ -56,20 +55,28 @@ To set up this project on your local machine:
    cd ML_Drone_Project
    ```
 
-2. **Install dependencies:(currently working on requirements file...)**
+2. **Install dependencies:**
    Ensure that you have Python 3.7+ and the necessary libraries installed. You can install the required Python packages using `pip`:
    ```bash
    pip install -r requirements.txt
    ```
 
-3. **Run the Mission Scripts:**
+3. **Install `edge-tpu-silva`:**
+   This project uses the `edge-tpu-silva` repository for processing object detection on Google Coral. Clone and install the necessary dependencies:
+   ```bash
+   git clone https://github.com/DAVIDNYARKO123/edge-tpu-silva.git
+   cd edge-tpu-silva
+   pip install -r requirements.txt
+   ```
+
+4. **Run the Mission Scripts:**
    Navigate to the `Missions` directory and execute the main mission script:
    ```bash
    cd Missions
    python main.py --connect /dev/ttyACM0 --waypoints mymission.waypoints
    ```
 
-4. **Run the Object Detection:**
+5. **Run the Object Detection:**
    Navigate to the `ML` directory and execute the `run_detection.py` script to process a video:
    ```bash
    cd ML
@@ -82,5 +89,6 @@ To set up this project on your local machine:
 - [DroneKit-Python](http://python.dronekit.io/)
 - [YOLOv4: Optimal Speed and Accuracy of Object Detection](https://arxiv.org/abs/2004.10934)
 - [Google Coral](https://coral.ai/)
+- [edge-tpu-silva Repository](https://github.com/DAVIDNYARKO123/edge-tpu-silva)
 
 Feel free to explore and contribute to this project by submitting issues or pull requests. Enjoy flying and coding!
