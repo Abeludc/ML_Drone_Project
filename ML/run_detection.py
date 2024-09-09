@@ -11,7 +11,7 @@ def run_detection(save_output=False):
         print("Error opening video file.")
         return
 
-    # Configurar VideoWriter si se requiere guardar el video
+    # Set up VideoWriter if saving the video is required
     if save_output:
         frame_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
         frame_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
@@ -19,14 +19,14 @@ def run_detection(save_output=False):
         fourcc = cv2.VideoWriter_fourcc(*'mp4v')
         out = cv2.VideoWriter('/home/pi/Desktop/ML/proc_video_8n640.mp4', fourcc, fps, (frame_width, frame_height))
 
-    # Procesar la detección
+    # Process detection
     results = process_detection(
         model_path=model_path,
         input_path=video_path,
         imgsz=640,
         threshold=0.5,
         verbose=True,
-        show=False,  # Esto habilita la visualización sin procesamiento adicional
+        show=False,  # This enables visual display without additional processing
     )
 
     try:
@@ -36,20 +36,20 @@ def run_detection(save_output=False):
                 if not ret:
                     break
 
-                # Dibujar detecciones en el cuadro y guardarlo
+                # Draw detections on the frame and save it
                 for obj in objs_lst:
                     bbox = obj['bbox']
                     label = obj['label']
                     conf = obj['conf']
-                    color = (0, 255, 0)  # Color estático por simplicidad
+                    color = (0, 255, 0)  # Static color for simplicity
 
                     cv2.rectangle(frame, (int(bbox[0]), int(bbox[1])), (int(bbox[2]), int(bbox[3])), color, 2)
                     cv2.putText(frame, f'{label} {conf:.2f}', (int(bbox[0]), int(bbox[1]-10)), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
 
                 out.write(frame)
             else:
-                # Simplemente procesar cuadros sin guardarlos
-                cap.grab()  # Capturar cuadros sin decodificar si no se guarda para reducir la carga
+                # Simply process frames without saving
+                cap.grab()  # Grab frames without decoding if not saving to reduce overhead
     finally:
         cap.release()
         if save_output:
